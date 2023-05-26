@@ -9,6 +9,7 @@
 </template>
 
 <script setup>
+  /* eslint-disable */
   import {ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted, onErrorCaptured} from 'vue'
   // data, event 초기화(beforeCreate, created) => setUp
   const num = ref(0);

@@ -2,7 +2,7 @@
   <h3>A07 Computed</h3>
     
   <div>
-    Num: {{num}} <br />
+    Num: {{num}} / {{ numComputed }}<br />
     <button @click="increase">NUM+</button><br>
     <br>
   </div>
@@ -13,21 +13,22 @@
       <tr><th>NO</th><th>NAME</th><th>TEL</th><th>ADDRESS</th></tr>
     </thead>
     <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr v-for="contact in contactList" :key="contact.no">
+        <td>{{ contact.no }}</td>
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.tel }}</td>
+        <td>{{ contact.address }}</td>
       </tr>
     </tbody>
   </table>
-
   <div v-show="isLoading">Loading....</div>
-  <button>STOP WATCH</button>
+
+  <button     @click="stop">STOP WATCH</button>
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  /* eslint-disable */
+  import { computed, ref, watch } from 'vue';
 
   const num = ref(0);
   const isLoading = ref(false);
@@ -37,7 +38,7 @@
   const getContactList = () => {
     isLoading.value = true;
     contactList.value = [];
-    const url = 'http://sample.bmaster.kro.kr/contacts_long/search/' + state.search;
+    const url = 'https://sample.bmaster.kro.kr/contacts_long/search/' + search.value;
     fetch(url)
     .then( resp => resp.json())
     .then( data => {
@@ -47,5 +48,18 @@
     .catch( error => console.error(error) )
   }
 
+  // computed
+  const numComputed = computed( () => num.value + 100 );
 
+  // watch
+  const stopWatch = watch(
+    () => search.value,   // 감시 대상
+    (newVal, oldVal) => {
+      if(newVal.length >= 2) getContactList()
+    }
+  )
+
+  // 리턴값으로 받은 함수를 실행하면 watch 함수에서 지정한 함수가 삭제된다
+  // 즉 watch가 더 이상 지원되지 않음
+  const stop = () => stopWatch();
 </script>
