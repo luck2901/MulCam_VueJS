@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>A02 Mixin</h3>
+    <h3>{{ title }}</h3>
 
     <div>
       Num: {{num}}<br>

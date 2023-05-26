@@ -26,7 +26,7 @@
       <span v-setColor.color="'orange'">But the web is extremely diverse</span> - the things we build on the web may vary drastically in form and scale. 
       <span v-setArgs:color="'orange'">With that in mind</span>, Vue is designed to be flexible and incrementally adoptable. 
       <span v-setArgs:border="'orange'">Depending</span> on your use case, 
-          <span v-makeDOM="'orange'">Vue can be used</span> in different ways:<br>
+        <span v-makeDOM="'orange'">Vue can be used</span> in different ways:<br>
     </div>
 
     <button @click="changeCheck">{{isChecked ? 'HIDE' : 'SHOW'}}</button>

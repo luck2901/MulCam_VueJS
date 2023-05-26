@@ -2,6 +2,8 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// npm i axios
+
 import * as myDir from './modules/directive'; // directive
 // import { counterMixin } from './modules/mixin'   // mixin
 import plugins from './modules/plugin'; // plugin
@@ -9,6 +11,7 @@ import plugins from './modules/plugin'; // plugin
 const app = createApp(App);
 
 // directive
+// 컴퍼넌트에서 사용할 때 "v-사용자지시자" 형태로 사용
 app.directive('view', myDir.view);
 app.directive('showHide', myDir.showHide);
 app.directive('setColor', myDir.setColor);

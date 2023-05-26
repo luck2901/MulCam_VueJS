@@ -27,6 +27,7 @@ export const showHide = (el, binding) => {
 };
 
 // 지시자가 붙은 경우
+// modifiers => v-name.속성
 export const setColor = (el, binding) => {
   // if (binding.value === binding.oldValue) return;
   if (binding.modifiers.color) el.style.color = binding.value;
